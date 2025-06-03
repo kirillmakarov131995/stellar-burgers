@@ -4,7 +4,10 @@ import { useDispatch, useSelector } from '../../services/store/store';
 import { Preloader } from '@ui';
 import { Modal } from '@components';
 import { RequestState } from '@utils-types';
-import { registerAsyncThunk } from '../../services/store/features/auth/authSlice';
+import {
+  registerAsyncThunk,
+  resetRequestState
+} from '../../services/store/features/auth/authSlice';
 
 export const Register: FC = () => {
   const [userName, setUserName] = useState('');
@@ -13,8 +16,7 @@ export const Register: FC = () => {
   const dispatch = useDispatch();
 
   const isLoading = useSelector((state) => state.app.isLoading);
-  // const responseMessage = useSelector((state) => state.user.responseMessage);
-  const responseMessage = '';
+  const requestState = useSelector((state) => state.auth.requestState);
   const actionState = useSelector((state) => state.user.actionState);
 
   const handleSubmit = (e: SyntheticEvent) => {
@@ -55,11 +57,11 @@ export const Register: FC = () => {
         handleSubmit={handleSubmit}
       />
 
-      {responseMessage ? (
+      {requestState && requestState === 'failed' ? (
         <Modal
-          title={responseMessage}
+          title={'Ошибка регистрации'}
           onClose={() => {
-            // dispatch(resetResponseMessage());
+            dispatch(resetRequestState());
           }}
         />
       ) : null}

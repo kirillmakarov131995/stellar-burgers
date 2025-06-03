@@ -1,9 +1,9 @@
-import React, { FC, ReactElement, ReactNode, useEffect, useState } from 'react';
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { ReactElement, useEffect } from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from '../../services/store/store';
 import { Preloader } from '@ui';
 import { checkAuthAsyncThunk } from '../../services/store/features/auth/authSlice';
-import { getIngredientsAsyncThunk } from '../../services/store/features/ingredients/slices/ingredientsSlice';
+import { getIngredientsAsyncThunk } from '../../services/store/features/ingredients/ingredientsSlice';
 
 interface IProtectedRoute {
   onlyUnAuthed?: boolean;
@@ -25,10 +25,6 @@ export function ProtectedRoute({
     });
   }, []);
 
-  // useEffect(() => {
-  //   // console.log(isAuthorized);
-  // }, [isAuthorized]);
-
   if (!isAuthChecked) {
     return <Preloader />;
   }
@@ -44,9 +40,6 @@ export function ProtectedRoute({
       location.state.pageToLoad
     ) {
       return <Navigate to={location.state.pageToLoad} replace />;
-    } else {
-      // return <Navigate to={'/'} replace />;
-      // navigate(-1);
     }
   }
 

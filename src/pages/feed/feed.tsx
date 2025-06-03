@@ -5,12 +5,10 @@ import { FC, useEffect } from 'react';
 import { useSelector, useDispatch } from '../../services/store/store';
 
 import { getFeedsAsyncThunk } from '../../services/store/features/feed/feedSlice';
-import { getIngredientsAsyncThunk } from '../../services/store/features/ingredients/slices/ingredientsSlice';
+import { getIngredientsAsyncThunk } from '../../services/store/features/ingredients/ingredientsSlice';
 
 export const Feed: FC = () => {
   const dispatch = useDispatch();
-  /** TODO: взять переменную из стора */
-  // const orders: TOrder[] = [];
   const orders = useSelector((state) => state.feed.feeds);
   const ingredients = useSelector(
     (state) => state.burgerConstructor.constructorItems.ingredients

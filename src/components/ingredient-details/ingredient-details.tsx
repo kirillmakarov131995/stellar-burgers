@@ -3,10 +3,7 @@ import { Preloader } from '../ui/preloader';
 import { IngredientDetailsUI } from '../ui/ingredient-details';
 import { useDispatch, useSelector } from '../../services/store/store';
 import { useNavigate, useParams } from 'react-router-dom';
-import {
-  getIngredientAsyncThunk,
-  selectIngredient
-} from '../../services/store/features/ingredients/slices/ingredientsSlice';
+import { getIngredientAsyncThunk } from '../../services/store/features/ingredients/ingredientsSlice';
 
 export const IngredientDetails: FC = () => {
   const dispatch = useDispatch();

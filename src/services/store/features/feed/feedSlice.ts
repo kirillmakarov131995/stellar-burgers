@@ -1,16 +1,13 @@
 import {
   getFeedsApi,
-  getIngredientsApi,
   getOrderByNumberApi,
   TFeedsResponse,
   TOrderResponse
 } from '@api';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TIngredient, TOrder, TTabMode } from '@utils-types';
+import { TOrder } from '@utils-types';
 import { RootState } from '../../store';
-import { getIngredientsAsyncThunk } from '../ingredients/slices/ingredientsSlice';
-
-// type TIngredientTypes = 'main' | 'bun' | 'sauces';
+import { getIngredientsAsyncThunk } from '../ingredients/ingredientsSlice';
 
 type TRootReducerState = {
   isLoading: boolean;
@@ -85,8 +82,5 @@ const feedSlice = createSlice({
       });
   }
 });
-
-// export const { selectIngredient } = ingredientsSlice.actions;
-// export const { getMains } = ingredientsSlice.selectors;
 
 export default feedSlice.reducer;

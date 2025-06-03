@@ -13,8 +13,6 @@ import '../../index.css';
 import styles from './app.module.css';
 
 import {
-  AppHeader,
-  FeedInfo,
   IngredientDetails,
   Modal,
   OrderInfo,
@@ -28,14 +26,11 @@ import {
   useNavigate
 } from 'react-router-dom';
 import PageLayout from '../layouts/PageLayout/PageLayout';
-import { resolve } from 'path';
-import { setTimeout } from 'timers/promises';
 
 function App() {
   const navigate = useNavigate();
   const location = useLocation();
   const backgroundLocation = location.state?.background;
-  // console.log(location);
 
   function onModalClose() {
     if (backgroundLocation) {

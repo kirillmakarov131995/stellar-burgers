@@ -1,14 +1,7 @@
 import { orderBurgerApi, TNewOrderResponse } from '@api';
-import {
-  createAsyncThunk,
-  createSlice,
-  current,
-  PayloadAction
-} from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TConstructorIngredient, TIngredient, TOrder } from '@utils-types';
-import { getCookie } from 'src/utils/cookie';
 import { v4 as uuidv4 } from 'uuid';
-import { checkAuthAsyncThunk } from '../auth/authSlice';
 import { RootState } from '../../store';
 
 interface IConstructorItems {
@@ -47,7 +40,6 @@ const burgerConstructorSlice = createSlice({
       state,
       action: PayloadAction<TIngredient>
     ) => {
-      // console.log(action.payload);
       if (action.payload) {
         if (action.payload.type === 'bun') {
           state.constructorItems.bun = action.payload;
@@ -72,6 +64,61 @@ const burgerConstructorSlice = createSlice({
             (item) => item.id !== selectedItem.id
           );
       }
+    },
+    resetOrderModalData: (state) => {
+      state.orderModalData = null;
+      state.orderRequest = false;
+    },
+    moveIngredient: (
+      state,
+      action: PayloadAction<{
+        ingredient: TConstructorIngredient;
+        place: 'up' | 'down';
+      }>
+    ) => {
+      if (action.payload.ingredient) {
+        const currentItem = action.payload.ingredient;
+        let currentItemIndex: number = -1;
+        let replaceItemIndex: number = -1;
+        let replaceItem: TConstructorIngredient | null = null;
+
+        switch (action.payload.place) {
+          case 'up':
+            state.constructorItems.ingredients.forEach((item, index) => {
+              if (item.id !== currentItem.id) {
+                replaceItem = item;
+                replaceItemIndex = index;
+              } else {
+                currentItemIndex = index;
+
+                if (replaceItem) {
+                  state.constructorItems.ingredients[replaceItemIndex] =
+                    currentItem;
+                  state.constructorItems.ingredients[currentItemIndex] =
+                    replaceItem;
+                }
+                return;
+              }
+            });
+            break;
+          case 'down':
+            state.constructorItems.ingredients.forEach((item, index) => {
+              if (item.id === currentItem.id) {
+                currentItemIndex = index;
+              } else if (currentItemIndex !== -1 && !replaceItem) {
+                replaceItem = item;
+                replaceItemIndex = index;
+
+                state.constructorItems.ingredients[currentItemIndex] =
+                  replaceItem;
+                state.constructorItems.ingredients[replaceItemIndex] =
+                  currentItem;
+                return;
+              }
+            });
+            break;
+        }
+      }
     }
   },
   extraReducers(builder) {
@@ -85,6 +132,7 @@ const burgerConstructorSlice = createSlice({
               ingredients: []
             };
             state.orderRequest = false;
+            state.orderModalData = action.payload.order;
           }
         }
       )
@@ -93,12 +141,15 @@ const burgerConstructorSlice = createSlice({
       })
       .addCase(makeOrderAsyncThunk.rejected, (state, action) => {
         state.orderRequest = false;
-        console.log(action.payload);
       });
   }
 });
 
-export const { addIngredientIntoConstructor, removeIngredient } =
-  burgerConstructorSlice.actions;
+export const {
+  addIngredientIntoConstructor,
+  removeIngredient,
+  resetOrderModalData,
+  moveIngredient
+} = burgerConstructorSlice.actions;
 
 export default burgerConstructorSlice.reducer;

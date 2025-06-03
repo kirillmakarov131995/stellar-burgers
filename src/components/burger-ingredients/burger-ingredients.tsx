@@ -6,7 +6,6 @@ import { BurgerIngredientsUI } from '../ui/burger-ingredients';
 import { useSelector } from '../../services/store/store';
 
 export const BurgerIngredients: FC = () => {
-  /** TODO: взять переменные из стора */
   const buns = useSelector((state) => state.ingredients.bun);
   const mains = useSelector((state) => state.ingredients.main);
   const sauces = useSelector((state) => state.ingredients.sauce);
@@ -47,8 +46,6 @@ export const BurgerIngredients: FC = () => {
     if (tab === 'sauce')
       titleSaucesRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
-
-  // return null;
 
   return (
     <BurgerIngredientsUI

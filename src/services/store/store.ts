@@ -5,14 +5,13 @@ import {
   useDispatch as dispatchHook,
   useSelector as selectorHook
 } from 'react-redux';
-import ingredientsSlice from './features/ingredients/slices/ingredientsSlice';
+import ingredientsSlice from './features/ingredients/ingredientsSlice';
 import burgerConstructorSlice from './features/burger-constructor/burgerConstructorSlice';
 import userSlice from './features/user/userSlice';
 import feedSlice from './features/feed/feedSlice';
 import authSlice from './features/auth/authSlice';
 import appSlice from './features/app/appSlice';
 
-// const rootReducer = () => {}; // Заменить на импорт настоящего редьюсера
 const rootReducer = combineReducers({
   app: appSlice,
   auth: authSlice,

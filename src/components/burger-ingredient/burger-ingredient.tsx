@@ -12,7 +12,6 @@ export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
     const location = useLocation();
 
     const handleAdd = () => {
-      // TODO: Add to the store
       dispatch(addIngredientIntoConstructor(ingredient));
     };
 

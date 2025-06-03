@@ -3,24 +3,14 @@ import { Preloader } from '../ui/preloader';
 import { OrderInfoUI } from '../ui/order-info';
 import { TIngredient } from '@utils-types';
 import { useDispatch, useSelector } from '../../services/store/store';
-import { Navigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getOrderByIDAsyncThunk } from '../../services/store/features/feed/feedSlice';
-import { getIngredientsAsyncThunk } from '../../services/store/features/ingredients/slices/ingredientsSlice';
 
 export const OrderInfo: FC = () => {
   const { number } = useParams();
 
   const dispatch = useDispatch();
-  /** TODO: взять переменные orderData и ingredients из стора */
-  // const orderData = {
-  //   createdAt: '',
-  //   ingredients: [],
-  //   _id: '',
-  //   status: '',
-  //   name: '',
-  //   updatedAt: 'string',
-  //   number: 0
-  // };
+
   const orderData = useSelector(
     (state) => state.feed.selectedOrders[0] ?? null
   );

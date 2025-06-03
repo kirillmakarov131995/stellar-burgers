@@ -121,10 +121,6 @@ const authSlice = createSlice({
     resetRequestState: (state) => {
       state.requestState = null;
     },
-    // authChecked: (state, action: PayloadAction<{ success: boolean }>) => {
-    //   state.isAuthChecked = true;
-    //   state.isAuthorized = false;
-    // }
     setAuthChecked: (state) => {
       state.isAuthChecked = true;
     },
@@ -139,13 +135,10 @@ const authSlice = createSlice({
         registerAsyncThunk.fulfilled,
         (state, action: PayloadAction<TAuthResponse>) => {
           if (action.payload.success) {
-            // state.responseMessage = 'Аккаунт создан!';
             state.requestState = 'success';
           } else {
-            // state.responseMessage = 'Ошибка в создании аккаунта';
             state.requestState = 'failed';
           }
-          // state.isLoading = false;
         }
       )
       .addCase(

@@ -3,8 +3,6 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TIngredient, TTabMode } from '@utils-types';
 import { RootState } from 'src/services/store/store';
 
-// type TIngredientTypes = 'main' | 'bun' | 'sauces';
-
 interface IRootReducerTypesState extends Record<TTabMode, TIngredient[]> {
   main: TIngredient[];
   bun: TIngredient[];
@@ -55,16 +53,9 @@ const ingredientsSlice = createSlice({
   reducers: {
     selectIngredient: (state, action: PayloadAction<string>) => {
       if (action.payload) {
-        // console.log(123);
         state.selectedIngredient =
           state.ingredients.filter((item) => item._id === action.payload)[0] ??
           [];
-
-        // console.log('selected', state.ingredients);
-        // console.log(
-        //   'selected',
-        //   state.ingredients.filter((item) => item._id === action.payload)
-        // );
       }
     }
   },
@@ -105,6 +96,5 @@ const ingredientsSlice = createSlice({
 });
 
 export const { selectIngredient } = ingredientsSlice.actions;
-// export const { getMains } = ingredientsSlice.selectors;
 
 export default ingredientsSlice.reducer;

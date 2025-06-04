@@ -3,7 +3,6 @@ import { RegisterUI } from '@ui-pages';
 import { useDispatch, useSelector } from '../../services/store/store';
 import { Preloader } from '@ui';
 import { Modal } from '@components';
-import { RequestState } from '@utils-types';
 import {
   registerAsyncThunk,
   resetRequestState
@@ -17,7 +16,6 @@ export const Register: FC = () => {
 
   const isLoading = useSelector((state) => state.app.isLoading);
   const requestState = useSelector((state) => state.auth.requestState);
-  const actionState = useSelector((state) => state.user.actionState);
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
@@ -31,14 +29,14 @@ export const Register: FC = () => {
   };
 
   useEffect(() => {
-    switch (actionState) {
-      case RequestState.success:
+    switch (requestState) {
+      case 'success':
         setUserName('');
         setEmail('');
         setPassword('');
         break;
     }
-  }, [actionState]);
+  }, [requestState]);
 
   if (isLoading) {
     return <Preloader />;

@@ -1,7 +1,6 @@
 import { orderBurgerApi, TNewOrderResponse } from '@api';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TConstructorIngredient, TIngredient, TOrder } from '@utils-types';
-import { v4 as uuidv4 } from 'uuid';
 import { RootState } from '../../store';
 
 interface IConstructorItems {
@@ -38,17 +37,13 @@ const burgerConstructorSlice = createSlice({
   reducers: {
     addIngredientIntoConstructor: (
       state,
-      action: PayloadAction<TIngredient>
+      action: PayloadAction<TConstructorIngredient>
     ) => {
       if (action.payload) {
         if (action.payload.type === 'bun') {
           state.constructorItems.bun = action.payload;
         } else {
-          const id = uuidv4();
-          state.constructorItems.ingredients.push({
-            ...action.payload,
-            id
-          });
+          state.constructorItems.ingredients.push(action.payload);
         }
       }
     },

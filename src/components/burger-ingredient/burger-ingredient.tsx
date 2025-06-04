@@ -5,6 +5,7 @@ import { BurgerIngredientUI } from '@ui';
 import { TBurgerIngredientProps } from './type';
 import { useDispatch } from '../../services/store/store';
 import { addIngredientIntoConstructor } from '../../services/store/features/burger-constructor/burgerConstructorSlice';
+import { generateID } from '../../utils/utils';
 
 export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
   ({ ingredient, count }) => {
@@ -12,7 +13,9 @@ export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
     const location = useLocation();
 
     const handleAdd = () => {
-      dispatch(addIngredientIntoConstructor(ingredient));
+      dispatch(
+        addIngredientIntoConstructor({ ...ingredient, id: generateID() })
+      );
     };
 
     return (

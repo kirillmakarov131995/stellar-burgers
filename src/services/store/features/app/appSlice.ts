@@ -7,7 +7,7 @@ interface IAppState {
   currentPage: AppPages;
 }
 
-const initialState: IAppState = {
+export const initialState: IAppState = {
   isLoading: false,
   currentPage: null
 };

@@ -3,7 +3,7 @@ import {
   getOrderByNumberApi,
   TFeedsResponse,
   TOrderResponse
-} from '@api';
+} from '../../../../utils/burger-api';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TOrder } from '@utils-types';
 import { RootState } from '../../store';
@@ -17,7 +17,7 @@ type TRootReducerState = {
   selectedOrders: TOrder[];
 };
 
-const initialState: TRootReducerState = {
+export const initialState: TRootReducerState = {
   feeds: [],
   isLoading: false,
   total: 0,
@@ -63,6 +63,7 @@ const feedSlice = createSlice({
           state.feeds = state.feeds = action.payload.orders;
           state.total = action.payload.total;
           state.totalToday = action.payload.totalToday;
+          state.isLoading = false;
         }
       )
       .addCase(getFeedsAsyncThunk.rejected, (state) => {
@@ -75,6 +76,7 @@ const feedSlice = createSlice({
         getOrderByIDAsyncThunk.fulfilled,
         (state, action: PayloadAction<TOrderResponse>) => {
           state.selectedOrders = action.payload.orders;
+          state.isLoading = false;
         }
       )
       .addCase(getOrderByIDAsyncThunk.rejected, (state) => {

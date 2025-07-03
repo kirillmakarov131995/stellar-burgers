@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1751482121575" clover="3.2.0">
-  <project timestamp="1751482121575" name="All files">
-    <metrics statements="996" coveredstatements="904" conditionals="123" coveredconditionals="104" methods="35" coveredmethods="26" elements="1154" coveredelements="1034" complexity="0" loc="996" ncloc="996" packages="7" files="9" classes="9"/>
+<coverage generated="1751553803610" clover="3.2.0">
+  <project timestamp="1751553803610" name="All files">
+    <metrics statements="996" coveredstatements="890" conditionals="120" coveredconditionals="96" methods="35" coveredmethods="25" elements="1151" coveredelements="1011" complexity="0" loc="996" ncloc="996" packages="7" files="9" classes="9"/>
     <package name="services.store.features.app">
       <metrics statements="32" coveredstatements="28" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
       <file name="appSlice.ts" path="C:\Файлы\WEB\Курс\Яндекс-Практикум\sprint 12\stellar-burgers\src\services\store\features\app\appSlice.ts">
@@ -41,9 +41,9 @@
       </file>
     </package>
     <package name="services.store.features.auth">
-      <metrics statements="221" coveredstatements="210" conditionals="28" coveredconditionals="23" methods="5" coveredmethods="4"/>
+      <metrics statements="221" coveredstatements="205" conditionals="28" coveredconditionals="22" methods="5" coveredmethods="4"/>
       <file name="authSlice.ts" path="C:\Файлы\WEB\Курс\Яндекс-Практикум\sprint 12\stellar-burgers\src\services\store\features\auth\authSlice.ts">
-        <metrics statements="221" coveredstatements="210" conditionals="28" coveredconditionals="23" methods="5" coveredmethods="4"/>
+        <metrics statements="221" coveredstatements="205" conditionals="28" coveredconditionals="22" methods="5" coveredmethods="4"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -194,13 +194,13 @@
         <line num="148" count="1" type="stmt"/>
         <line num="149" count="1" type="stmt"/>
         <line num="150" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="151" count="2" type="cond" truecount="1" falsecount="0"/>
-        <line num="152" count="1" type="stmt"/>
-        <line num="153" count="1" type="stmt"/>
-        <line num="154" count="1" type="stmt"/>
-        <line num="155" count="1" type="stmt"/>
-        <line num="156" count="1" type="stmt"/>
-        <line num="157" count="2" type="stmt"/>
+        <line num="151" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="152" count="0" type="stmt"/>
+        <line num="153" count="0" type="stmt"/>
+        <line num="154" count="0" type="stmt"/>
+        <line num="155" count="0" type="stmt"/>
+        <line num="156" count="0" type="stmt"/>
+        <line num="157" count="1" type="stmt"/>
         <line num="158" count="1" type="stmt"/>
         <line num="159" count="1" type="stmt"/>
         <line num="160" count="1" type="stmt"/>
@@ -755,7 +755,7 @@
       </file>
     </package>
     <package name="utils">
-      <metrics statements="283" coveredstatements="246" conditionals="55" coveredconditionals="44" methods="18" coveredmethods="15"/>
+      <metrics statements="283" coveredstatements="237" conditionals="52" coveredconditionals="37" methods="18" coveredmethods="14"/>
       <file name="burger-api.ts" path="C:\Файлы\WEB\Курс\Яндекс-Практикум\sprint 12\stellar-burgers\src\utils\burger-api.ts">
         <metrics statements="235" coveredstatements="198" conditionals="44" coveredconditionals="33" methods="15" coveredmethods="12"/>
         <line num="1" count="1" type="stmt"/>
@@ -995,7 +995,7 @@
         <line num="235" count="1" type="cond" truecount="1" falsecount="0"/>
       </file>
       <file name="cookie.ts" path="C:\Файлы\WEB\Курс\Яндекс-Практикум\sprint 12\stellar-burgers\src\utils\cookie.ts">
-        <metrics statements="48" coveredstatements="48" conditionals="11" coveredconditionals="11" methods="3" coveredmethods="3"/>
+        <metrics statements="48" coveredstatements="39" conditionals="8" coveredconditionals="4" methods="3" coveredmethods="2"/>
         <line num="1" count="26" type="cond" truecount="1" falsecount="0"/>
         <line num="2" count="26" type="stmt"/>
         <line num="3" count="26" type="stmt"/>
@@ -1008,42 +1008,42 @@
         <line num="10" count="26" type="cond" truecount="2" falsecount="0"/>
         <line num="11" count="26" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
-        <line num="13" count="5" type="cond" truecount="1" falsecount="0"/>
-        <line num="14" count="5" type="stmt"/>
-        <line num="15" count="5" type="stmt"/>
-        <line num="16" count="5" type="cond" truecount="1" falsecount="0"/>
-        <line num="17" count="5" type="stmt"/>
-        <line num="18" count="5" type="stmt"/>
-        <line num="19" count="5" type="stmt"/>
-        <line num="20" count="5" type="stmt"/>
-        <line num="21" count="5" type="stmt"/>
-        <line num="22" count="5" type="stmt"/>
-        <line num="23" count="5" type="stmt"/>
-        <line num="24" count="5" type="cond" truecount="2" falsecount="0"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="27" count="1" type="stmt"/>
-        <line num="28" count="1" type="stmt"/>
-        <line num="29" count="5" type="stmt"/>
-        <line num="30" count="5" type="cond" truecount="2" falsecount="0"/>
-        <line num="31" count="1" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
-        <line num="33" count="5" type="stmt"/>
-        <line num="34" count="5" type="stmt"/>
-        <line num="35" count="5" type="cond" truecount="1" falsecount="0"/>
-        <line num="36" count="6" type="stmt"/>
-        <line num="37" count="6" type="stmt"/>
-        <line num="38" count="6" type="stmt"/>
-        <line num="39" count="6" type="stmt"/>
-        <line num="40" count="6" type="stmt"/>
-        <line num="41" count="6" type="stmt"/>
-        <line num="42" count="5" type="stmt"/>
-        <line num="43" count="5" type="stmt"/>
-        <line num="44" count="5" type="stmt"/>
+        <line num="13" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="19" count="4" type="stmt"/>
+        <line num="20" count="4" type="stmt"/>
+        <line num="21" count="4" type="stmt"/>
+        <line num="22" count="4" type="stmt"/>
+        <line num="23" count="4" type="stmt"/>
+        <line num="24" count="4" type="cond" truecount="0" falsecount="2"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="4" type="stmt"/>
+        <line num="30" count="4" type="cond" truecount="0" falsecount="2"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="4" type="stmt"/>
+        <line num="34" count="4" type="stmt"/>
+        <line num="35" count="4" type="stmt"/>
+        <line num="36" count="4" type="stmt"/>
+        <line num="37" count="4" type="stmt"/>
+        <line num="38" count="4" type="stmt"/>
+        <line num="39" count="4" type="stmt"/>
+        <line num="40" count="4" type="stmt"/>
+        <line num="41" count="4" type="stmt"/>
+        <line num="42" count="4" type="stmt"/>
+        <line num="43" count="4" type="stmt"/>
+        <line num="44" count="4" type="stmt"/>
         <line num="45" count="1" type="stmt"/>
-        <line num="46" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="47" count="1" type="stmt"/>
-        <line num="48" count="1" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
       </file>
     </package>
   </project>

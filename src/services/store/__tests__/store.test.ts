@@ -37,7 +37,6 @@ import {
   TOrderResponse,
   TUserResponse
 } from '@api';
-import { after, before } from 'node:test';
 import 'jest-localstorage-mock';
 import { getCookie } from '../../../utils/cookie';
 import { ingredients } from '../features/burger-constructor/ingredients';
@@ -121,9 +120,9 @@ describe('Testing async requests of the features', () => {
           user: data.user
         };
         global.fetch = jest.fn(
-          (): Promise<{ ok: 200; json: () => Promise<TAuthResponse> }> =>
+          (): Promise<{ ok: boolean; json: () => Promise<TAuthResponse> }> =>
             Promise.resolve({
-              ok: 200,
+              ok: true,
               json: () => Promise.resolve(expectedResult)
             })
         ) as jest.Mock;
@@ -173,10 +172,6 @@ describe('Testing async requests of the features', () => {
 
     describe('Testing logoutAsyncThunk requests of the authSlice', () => {
       test('Testing failed response no refreshToken', async () => {
-        before(() => {
-          global.localStorage.clear();
-        });
-
         const store = configureStore({
           reducer: { auth: authSlice },
           preloadedState: {
@@ -195,14 +190,12 @@ describe('Testing async requests of the features', () => {
       });
 
       test('Testing fulfilled response of the logoutAsyncThunk', async () => {
-        before(() => {
-          global.localStorage.setItem('refreshToken', data.refreshToken);
-        });
+        global.localStorage.setItem('refreshToken', data.refreshToken);
 
         global.fetch = jest.fn(
-          (): Promise<{ ok: 200; json: () => Promise<TAuthResponse> }> =>
+          (): Promise<{ ok: boolean; json: () => Promise<TAuthResponse> }> =>
             Promise.resolve({
-              ok: 200,
+              ok: true,
               json: () => Promise.resolve(data)
             })
         ) as jest.Mock;
@@ -234,9 +227,9 @@ describe('Testing async requests of the features', () => {
         };
 
         global.fetch = jest.fn(
-          (): Promise<{ ok: 200; json: () => Promise<TUserResponse> }> =>
+          (): Promise<{ ok: boolean; json: () => Promise<TUserResponse> }> =>
             Promise.resolve({
-              ok: 200,
+              ok: true,
               json: () => Promise.resolve({ ...data, user: newUserData })
             })
         ) as jest.Mock;
@@ -298,14 +291,10 @@ describe('Testing async requests of the features', () => {
       };
 
       test('Testing fulfilled response of the loginAsyncThunk', async () => {
-        after(() => {
-          global.localStorage.clear();
-        });
-
         global.fetch = jest.fn(
-          (): Promise<{ ok: 200; json: () => Promise<TAuthResponse> }> =>
+          (): Promise<{ ok: boolean; json: () => Promise<TAuthResponse> }> =>
             Promise.resolve({
-              ok: 200,
+              ok: true,
               json: () => Promise.resolve(data)
             })
         ) as jest.Mock;
@@ -333,9 +322,6 @@ describe('Testing async requests of the features', () => {
       });
 
       test('Testing failed response of the loginAsyncThunk', async () => {
-        before(() => {
-          global.localStorage.clear();
-        });
         global.fetch = jest.fn(
           (): Promise<{ json: () => Promise<TAuthResponse> }> =>
             Promise.reject({
@@ -369,9 +355,9 @@ describe('Testing async requests of the features', () => {
         global.document.cookie = `accessToken=${data.accessToken}; expires=Thu, 18 Dec 2029 12:00:00 UTC; path=/;`;
 
         global.fetch = jest.fn(
-          (): Promise<{ ok: 200; json: () => Promise<TUserResponse> }> =>
+          (): Promise<{ ok: boolean; json: () => Promise<TUserResponse> }> =>
             Promise.resolve({
-              ok: 200,
+              ok: true,
               json: () => Promise.resolve(data)
             })
         ) as jest.Mock;

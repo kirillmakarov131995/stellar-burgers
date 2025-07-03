@@ -1,4 +1,7 @@
 /// <reference types="cypress" />
+
+import { SELECTORS } from './e2e';
+
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite
@@ -35,3 +38,37 @@
 //     }
 //   }
 // }
+
+Cypress.Commands.add('getIngredientCardSelector', (id: string) =>
+  cy.get(`[data-ingredient-card-cy='${id}']`)
+);
+Cypress.Commands.add(
+  'findIngredientsListItemSelector',
+  (get: string, id: string) =>
+    cy.get(get).find(`[data-ingredients-list-item-cy='${id}']`)
+);
+Cypress.Commands.add(
+  'getIngredientsBunSelector',
+  (id: string, type: 'top' | 'bottom') =>
+    cy.get(
+      `[data-ingredients-bun-${type === 'bottom' ? 'bottom' : 'top'}-cy='${id}']`
+    )
+);
+Cypress.Commands.add(
+  'fillOrderConstructor',
+  (bunId: string, ingredientsIds: string[]) => {
+    cy.getIngredientCardSelector(bunId)
+      .should('exist')
+      .as('ingredientCardBun')
+      .find(SELECTORS.typeButton)
+      .click();
+
+    ingredientsIds.forEach((ingredientsId, index) => {
+      cy.getIngredientCardSelector(ingredientsId)
+        .should('exist')
+        .as(`ingredientCard${index + 1}`)
+        .find(SELECTORS.typeButton)
+        .click();
+    });
+  }
+);

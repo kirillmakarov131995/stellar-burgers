@@ -6,6 +6,7 @@ import { Preloader } from '../../components/ui';
 import { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from '../../services/store/store';
 import { getIngredientsAsyncThunk } from '../../services/store/features/ingredients/ingredientsSlice';
+import { checkAuthAsyncThunk } from '../../services/store/features/auth/authSlice';
 
 export const ConstructorPage: FC = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ export const ConstructorPage: FC = () => {
   );
 
   useEffect(() => {
+    dispatch(checkAuthAsyncThunk());
     dispatch(getIngredientsAsyncThunk());
   }, []);
 

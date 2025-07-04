@@ -14,7 +14,7 @@ import {
   TServerResponse,
   TUserResponse,
   updateUserApi
-} from '@api';
+} from '../../../../utils/burger-api';
 
 interface IAuthState {
   user: TUser | null;
@@ -24,7 +24,7 @@ interface IAuthState {
   requestState: 'success' | 'failed' | null;
 }
 
-const initialState: IAuthState = {
+export const initialState: IAuthState = {
   user: null,
   isAuthChecked: false,
   isAuthorized: false,
@@ -106,6 +106,7 @@ export const checkAuthAsyncThunk = createAsyncThunk(
       } catch (error) {}
       dispatch(setAuthChecked());
     }
+    dispatch(setAuthChecked());
   }
 );
 
@@ -141,6 +142,9 @@ const authSlice = createSlice({
           }
         }
       )
+      .addCase(registerAsyncThunk.rejected, (state) => {
+        state.requestState = 'failed';
+      })
       .addCase(
         logoutAsyncThunk.fulfilled,
         (state, action: PayloadAction<TServerResponse<{}>>) => {
@@ -193,6 +197,7 @@ const authSlice = createSlice({
         getUserAsyncThunk.fulfilled,
         (state, action: PayloadAction<TUserResponse>) => {
           if (action.payload.success) {
+            console.log('success');
             state.isAuthorized = true;
             state.user = {
               email: action.payload.user.email,

@@ -1,4 +1,4 @@
-import { getIngredientsApi } from '@api';
+import { getIngredientsApi } from '../../../../utils/burger-api';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TIngredient, TTabMode } from '@utils-types';
 import { RootState } from 'src/services/store/store';
@@ -9,13 +9,13 @@ interface IRootReducerTypesState extends Record<TTabMode, TIngredient[]> {
   sauce: TIngredient[];
 }
 
-type TRootReducerState = {
+export type TIngredientsReducerState = {
   ingredients: TIngredient[];
   isIngredientsLoading: boolean;
   selectedIngredient: TIngredient | null;
 } & IRootReducerTypesState;
 
-const initialState: TRootReducerState = {
+export const initialState: TIngredientsReducerState = {
   ingredients: [],
   bun: [],
   sauce: [],
